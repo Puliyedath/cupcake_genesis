@@ -34,6 +34,7 @@ module.exports = {
         "plugin:react/jsx-runtime",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
+        "prettier"
       ],
       settings: {
         react: {
@@ -53,7 +54,7 @@ module.exports = {
     // Typescript
     {
       files: ["**/*.{ts,tsx}"],
-      plugins: ["@typescript-eslint", "import"],
+      plugins: ["@typescript-eslint", "import", "prettier"],
       parser: "@typescript-eslint/parser",
       settings: {
         "import/internal-regex": "^~/",
@@ -70,7 +71,20 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:import/recommended",
         "plugin:import/typescript",
+        "plugin:prettier/recommended"
       ],
+      rules: {
+        "prettier/prettier": ["error", {
+          "printWidth": 100,
+          "tabWidth": 2,
+          "useTabs": false,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "bracketSpacing": true,
+          "arrowParens": "avoid"
+        }]
+      }
     },
 
     // Node
