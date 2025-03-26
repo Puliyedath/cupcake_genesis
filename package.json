@@ -12,6 +12,7 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
+    "prisma:migrate:deploy": "npx prisma migrate deploy",
     "typecheck": "tsc",
     "seed-data": "tsx scripts/seed_data.ts"
   },

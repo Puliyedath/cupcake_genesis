@@ -1,30 +1,29 @@
-# Welcome to Remix!
+# Cupcake App
 
 - 📖 [Remix docs](https://remix.run/docs)
 
 ## Development
 
-Run the dev server:
-
 ```shellscript
-npm run dev
+docker-compose up -d 
 ```
 
-## Deployment
+## Running migrations
 
-First, build your app for production:
+After building you app, run the prisma migrations
 
 ```sh
-npm run build
+npm run prisma:migrate:deploy"
 ```
 
-Then run the app in production mode:
+## Seeding Data:
+Adds fake cupcake and pastry chef data to the postgres database
 
 ```sh
-npm start
+npm run seed-data
 ```
 
-Now you'll need to pick a host to deploy it to.
+<!-- Now you'll need to pick a host to deploy it to.
 
 ### DIY
 
@@ -33,7 +32,7 @@ If you're familiar with deploying Node applications, the built-in Remix app serv
 Make sure to deploy the output of `npm run build`
 
 - `build/server`
-- `build/client`
+- `build/client` -->
 
 ## Styling
 

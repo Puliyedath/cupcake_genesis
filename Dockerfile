@@ -8,6 +8,9 @@ RUN npm install
 
 COPY . .
 
+# Initialize the prisma client => creates a generated folder in 
+RUN npm run prisma:generate
+
 EXPOSE 3000
 
 CMD ["npm", "run", "dev"]

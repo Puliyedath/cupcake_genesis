@@ -1,11 +1,11 @@
-import { loadEnv } from "vite";
+// import { loadEnv } from "vite";
 import { cupcakesDBClient } from "../prisma/client";
 import { CupcakeRating } from "../prisma/generated/client";
 import { faker } from "@faker-js/faker";
 
-const env = loadEnv("development", process.cwd(), "");
+// const env = loadEnv("development", process.cwd(), "");
 
-console.log({ env });
+// console.log({ env });
 
 const CUPCAKE_NAMES = [
   "Chocolate Dream",
