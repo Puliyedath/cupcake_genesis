@@ -2,18 +2,15 @@ services:
   cupcake-app:
     container_name: cupcake-app
     env_file:
-      - ./.env
+      - ./.env_services
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${PORT}:3000"
+      - "${HOST_PORT:-5000}:3000"
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules # This prevents the host volume from overwriting container node_modules
-    environment:
-      - CUPCAKES_DB_URL=${CUPCAKES_DB_URL}
-      - NODE_ENV=${NODE_ENV}
     command: npm run dev
 
 volumes:
