@@ -1,4 +1,3 @@
-version: "3"
 services:
   cupcake-app:
     container_name: cupcake-app

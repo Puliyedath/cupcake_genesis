@@ -1,5 +1,4 @@
 import { vitePlugin as remix } from "@remix-run/dev";
-import { getServerBuildDirectory } from "@remix-run/dev/dist/vite/plugin";
 import { defineConfig, loadEnv } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
@@ -25,7 +24,6 @@ export default defineConfig(({ mode }) => {
           v3_singleFetch: true,
           v3_lazyRouteDiscovery: true,
         },
-        serverBuildFile: "server.ts",
       }),
       tsconfigPaths(),
     ],
