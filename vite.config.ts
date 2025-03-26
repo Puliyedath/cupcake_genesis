@@ -9,6 +9,10 @@ declare module "@remix-run/node" {
 }
 
 export default defineConfig({
+  server: {
+    port: 3000,
+    host: "0.0.0.0", // this way we can access the app from the outside when running in a container
+  },
   plugins: [
     remix({
       future: {
