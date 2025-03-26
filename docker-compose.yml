@@ -2,16 +2,49 @@ services:
   cupcake-app:
     container_name: cupcake-app
     env_file:
-      - ./.env_services
+      - ./.env
     build:
       context: .
       dockerfile: Dockerfile
+    restart: unless-stopped
     ports:
       - "${HOST_PORT:-5000}:3000"
     volumes:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules # This prevents the host volume from overwriting container node_modules
+    depends_on:
+      cupcake-db:
+        condition: service_healthy
+    networks:
+      - cupcake-network
     command: npm run dev
+  
+  cupcake-db:
+    container_name: cupcake-db
+    image: postgres
+    shm_size: 216mb
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-cupcakes}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER:-postgres}", "-d", "${POSTGRES_DB:-cupcakes}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - cupcake-network
+    ports:
+      - "${HOST_DB_PORT:-5432}:5432"
+    volumes:
+      - cupcake_db_data:/var/lib/postgresql/data
+
 
 volumes:
   node_modules:
+  cupcake_db_data:
+
+networks:
+  cupcake-network:
+    driver: bridge

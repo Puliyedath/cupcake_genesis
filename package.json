@@ -9,7 +9,11 @@
     "start": "NODE_ENV=production node ./server.js",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:fix": "eslint --fix --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "typecheck": "tsc"
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "typecheck": "tsc",
+    "seed-data": "tsx scripts/seed_data.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.5.0",
@@ -23,6 +27,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
     "@remix-run/dev": "^2.16.2",
     "@types/express": "^5.0.1",
     "@types/react": "^18.2.20",
@@ -42,6 +47,7 @@
     "prettier": "^3.0.0",
     "prisma": "^6.5.0",
     "tailwindcss": "^3.4.4",
+    "tsx": "^4.19.3",
     "typescript": "^5.1.6",
     "vite": "^6.0.0",
     "vite-tsconfig-paths": "^4.2.1"

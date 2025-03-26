@@ -1,0 +1,37 @@
+datasource db {
+    provider = "postgresql"
+    url = env("CUPCAKES_DB_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+    output = "./generated/client"
+}
+
+model PastryChef {
+    id String @id @default(uuid())
+    name String
+    cupcakes Cupcake[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Cupcake {
+    id String @id @default(uuid())
+    rating CupcakeRating
+    name String
+    description Json?
+    imageUrl String
+    pastryChefId String
+    pastryChef PastryChef @relation(fields: [pastryChefId], references: [id])
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+enum CupcakeRating {
+    ONE
+    TWO
+    THREE
+    FOUR
+    FIVE
+}

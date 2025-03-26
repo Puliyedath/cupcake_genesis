@@ -27,6 +27,7 @@ export default defineConfig(({ mode }) => {
       }),
       tsconfigPaths(),
     ],
+    // variables are available to the app, VITE_ prefixed variables are available to the client
     define: { env },
   };
 });
