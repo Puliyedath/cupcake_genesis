@@ -13,7 +13,6 @@ services:
       - .:/usr/src/app
       - node_modules:/usr/src/app/node_modules # This prevents the host volume from overwriting container node_modules
     environment:
-      - PORT=${PORT}
       - CUPCAKES_DB_URL=${CUPCAKES_DB_URL}
       - NODE_ENV=${NODE_ENV}
     command: npm run dev
