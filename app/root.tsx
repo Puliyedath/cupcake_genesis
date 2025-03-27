@@ -27,8 +27,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-
+        <div className="container mx-auto">
+          <header className="py-4">
+            <h1 className="text-2xl font-bold font-mono">Cupcake App</h1>
+          </header>
+          {children}
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
