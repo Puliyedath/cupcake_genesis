@@ -16,6 +16,9 @@ export default {
           "Noto Color Emoji",
         ],
       },
+      colors: {
+        cupcakeYellow: "#f4b942",
+      },
     },
   },
   plugins: [],

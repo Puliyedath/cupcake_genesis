@@ -27,12 +27,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <div className="container mx-auto">
-          <header className="py-4">
-            <h1 className="text-2xl font-bold font-mono">Cupcake App</h1>
-          </header>
-          {children}
-        </div>
+        <header className="py-4 flex items-center flex-start bg-cupcakeYellow sticky top-0 z-10">
+          <img src="public/logo.png" alt="Cupcake App Logo" className="h-16 w-auto" />
+          <h1 className="text-2xl font-bold font-mono">AKIRA&apos;s Cupcake</h1>
+        </header>
+        <div className="container mx-auto">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>
