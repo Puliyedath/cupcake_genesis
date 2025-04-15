@@ -1,4 +1,4 @@
-type RatingProps = {
+export type RatingProps = {
   value: "ONE" | "TWO" | "THREE" | "FOUR" | "FIVE";
   className?: string;
 };
