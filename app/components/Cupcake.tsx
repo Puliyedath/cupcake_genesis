@@ -1,0 +1,51 @@
+import { Rating, RatingProps } from "./Rating";
+import { CupCakeActions } from "./Actions";
+
+function Image({
+  src,
+  alt,
+  children,
+}: {
+  src: string;
+  alt: string;
+  children: React.ReactNode;
+  cupcakeId: string;
+}) {
+  return (
+    <div className="flex flex-col relative">
+      <img
+        src={src}
+        alt={alt}
+        className="aspect-square w-full rounded-md bg-gray-200 lg:aspect-auto sm:h-40 md:h-60 lg:h-80"
+      />
+      {children}
+    </div>
+  );
+}
+
+type Cupcake = {
+  id: string;
+  name: string;
+  imageUrl: string;
+  pastryChef: { name: string };
+  rating: RatingProps["value"];
+};
+
+export function Cupcake({ cupcake }: { cupcake: Cupcake }) {
+  return (
+    <div key={cupcake.id} className="bg-white py-4" data-cupcake-id={cupcake.id}>
+      <div className="mt-4">
+        <p className="text-sm text-gray-700 font-mono font-bold">{cupcake.name}</p>
+      </div>
+      <Image src={cupcake.imageUrl} alt={cupcake.name} cupcakeId={cupcake.id}>
+        <div className="mt-4 flex justify-between">
+          <div>
+            <h3 className="text-sm text-gray-700 font-mono font-bold">{cupcake.pastryChef.name}</h3>
+          </div>
+          <Rating value={cupcake.rating} />
+        </div>
+        <CupCakeActions cupcakeId={cupcake.id} />
+      </Image>
+    </div>
+  );
+}
