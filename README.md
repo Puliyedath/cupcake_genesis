@@ -9,7 +9,7 @@ This is a Remix application with a PostgreSQL database running in Docker contain
 
 ## Environment Variables
 
-Create a `.env` file in the root directory with the following variables:
+Create a `.env` file in the root directory with the following variables (optional):
 
 ```env
 POSTGRES_USER=postgres
