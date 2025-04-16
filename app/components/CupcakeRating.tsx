@@ -1,5 +1,6 @@
+export const ratingValues = ["ONE", "TWO", "THREE", "FOUR", "FIVE"] as const;
 export type RatingProps = {
-  value: "ONE" | "TWO" | "THREE" | "FOUR" | "FIVE";
+  value: (typeof ratingValues)[number];
   className?: string;
 };
 
