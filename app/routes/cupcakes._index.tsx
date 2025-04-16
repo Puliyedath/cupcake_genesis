@@ -2,6 +2,7 @@ import { Outlet, useLoaderData } from "@remix-run/react";
 import { cupcakesDBClient } from "../../prisma/client";
 import { ActionFunctionArgs } from "@remix-run/node";
 import { Cupcake } from "~/components/Cupcake";
+import { Cupcake as CupcakeType } from "@prisma/client";
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -16,7 +17,7 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export async function loader() {
-  const cupcakes = await cupcakesDBClient.cupcake.findMany({
+  const cupcakes: CupcakeType[] = await cupcakesDBClient.cupcake.findMany({
     take: 20,
     include: { pastryChef: true },
     orderBy: {
@@ -27,10 +28,10 @@ export async function loader() {
 }
 
 export default function Cupcakes() {
-  const { cupcakes } = useLoaderData<typeof loader>();
+  const { cupcakes }: { cupcakes: CupcakeType[] } = useLoaderData<typeof loader>();
   return (
     <div className="flex flex-wrap gap-4 hover:cursor-pointer">
-      {cupcakes.map(cupcake => (
+      {cupcakes.map((cupcake: CupcakeType) => (
         <Cupcake key={cupcake.id} cupcake={cupcake} />
       ))}
       <Outlet />

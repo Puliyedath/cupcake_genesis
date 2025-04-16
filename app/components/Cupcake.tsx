@@ -1,5 +1,6 @@
-import { Rating, RatingProps } from "./Rating";
+import { Rating } from "./CupcakeRating";
 import { CupCakeActions } from "./Actions";
+import { Cupcake as CupcakeType } from "@prisma/client";
 
 function Image({
   src,
@@ -23,15 +24,7 @@ function Image({
   );
 }
 
-type Cupcake = {
-  id: string;
-  name: string;
-  imageUrl: string;
-  pastryChef: { name: string };
-  rating: RatingProps["value"];
-};
-
-export function Cupcake({ cupcake }: { cupcake: Cupcake }) {
+export function Cupcake({ cupcake }: { cupcake: CupcakeType }) {
   return (
     <div key={cupcake.id} className="bg-white py-4" data-cupcake-id={cupcake.id}>
       <div className="mt-4">
