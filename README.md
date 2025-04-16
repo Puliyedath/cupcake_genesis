@@ -1,39 +1,48 @@
-# Cupcake App
+# Cupcakes Application
 
-- 📖 [Remix docs](https://remix.run/docs)
+This is a Remix application with a PostgreSQL database running in Docker containers.
 
-## Development
+## Prerequisites
 
-```shellscript
-docker-compose up -d 
+- Docker and Docker Compose installed on your system
+- Node.js and npm (for local development)
+
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=cupcakes
+HOST_PORT=3000
+HOST_DB_PORT=5432
 ```
 
-## Running migrations
+You can modify these values according to your needs.
 
-After building you app, run the prisma migrations
+## Running the Application
 
-```sh
-npm run prisma:migrate:deploy"
+1. Start the application and database:
+
+```bash
+docker-compose build
+docker-compose up -d
 ```
 
-## Seeding Data:
-Adds fake cupcake and pastry chef data to the postgres database
+This will:
+- Start the PostgreSQL database
+- Run database migrations
+- Seed the database with initial data
+- Start the Remix application in development mode
 
-```sh
-npm run seed-data
+2. Access the application:
+- The application will be available at `http://localhost:3000`
+
+## Development Workflow
+
+- The application code is mounted as a volume, so changes to your code will trigger hot reloading
+- To stop the application, run `docker-compose down`
+
 ```
 
-<!-- Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client` -->
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
