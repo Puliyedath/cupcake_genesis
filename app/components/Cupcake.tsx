@@ -14,11 +14,7 @@ function Image({
 }) {
   return (
     <div className="flex flex-col relative">
-      <img
-        src={src}
-        alt={alt}
-        className="aspect-square w-full rounded-md bg-gray-200 lg:aspect-auto sm:h-40 md:h-60 lg:h-80"
-      />
+      <img src={src} alt={alt} className="rounded-md bg-gray-200" />
       {children}
     </div>
   );
