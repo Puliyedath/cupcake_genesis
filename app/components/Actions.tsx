@@ -1,6 +1,7 @@
-import { Link, NavLink, useFetcher } from "@remix-run/react";
+import { Cupcake } from "@prisma/client";
+import { NavLink, useFetcher } from "@remix-run/react";
 
-export function CupCakeActions({ cupcakeId }: { cupcakeId: string }) {
+export function CupCakeActions({ id: cupcakeId }: Pick<Cupcake, "id">) {
   const fetcher = useFetcher();
   return (
     <div className="flex justify-evenly absolute top-0 left-0 right-0 bottom-0 items-center opacity-0 hover:opacity-100 transition-opacity">

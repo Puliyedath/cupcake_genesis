@@ -16,7 +16,8 @@ const Image = forwardRef<HTMLImageElement, { src: string; alt: string; children:
 
 Image.displayName = "Image";
 
-export function Cupcake({ cupcake }: { cupcake: CupcakeType }) {
+type CupcakeWithPastryChef = CupcakeType & { pastryChef: PastryChef };
+export function Cupcake({ cupcake }: { cupcake: CupcakeWithPastryChef }) {
   const imageRef = useRef<HTMLImageElement>(null);
   const metadataRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLParagraphElement>(null);
@@ -55,7 +56,7 @@ export function Cupcake({ cupcake }: { cupcake: CupcakeType }) {
           </div>
           <Rating value={cupcake.rating} />
         </div>
-        <CupCakeActions cupcakeId={cupcake.id} />
+        <CupCakeActions id={cupcake.id} />
       </Image>
     </div>
   );

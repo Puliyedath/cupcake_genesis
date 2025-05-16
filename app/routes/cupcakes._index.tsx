@@ -1,5 +1,5 @@
 import { useLoaderData } from "@remix-run/react";
-import { cupcakesDBClient } from "../../prisma/client";
+import { cupcakesDBClient, CupcakeWithPastryChef } from "../../prisma/client";
 import { ActionFunctionArgs } from "@remix-run/node";
 import { Cupcake } from "~/components/Cupcake";
 import { Cupcake as CupcakeType } from "@prisma/client";
@@ -28,10 +28,10 @@ export async function loader() {
 }
 
 export default function Cupcakes() {
-  const { cupcakes }: { cupcakes: CupcakeType[] } = useLoaderData<typeof loader>();
+  const { cupcakes }: { cupcakes: CupcakeWithPastryChef[] } = useLoaderData<typeof loader>();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[10px] auto-rows-[10px] hover:cursor-pointer py-8">
-      {cupcakes.map((cupcake: CupcakeType) => (
+      {cupcakes.map((cupcake: CupcakeWithPastryChef) => (
         <Cupcake key={cupcake.id} cupcake={cupcake} />
       ))}
     </div>
