@@ -44,5 +44,10 @@ This will:
 - The application code is mounted as a volume, so changes to your code will trigger hot reloading
 - To stop the application, run `docker-compose down`
 
+3. Running Just the cupcake-app container (all its dependencies should run)
+  docker run --env-file ./.env_test --network cupcakes_cupcake-network -p 3000:3000 cupcakes_app:prod
+
 ```
+
+
 

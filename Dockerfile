@@ -23,7 +23,7 @@ RUN npm run prisma:generate
 EXPOSE 3000
 CMD ["npm", "run", "dev"]
 
-# -- Production Stage --    
+# -- Production Stage production is a target that can be used in cli--    
 FROM node:20-alpine AS production
 WORKDIR /usr/src/app
 ENV NODE_ENV=production
@@ -36,6 +36,9 @@ COPY --from=base /usr/src/app/build ./build
 COPY --from=base /usr/src/app/public ./public
 COPY --from=base /usr/src/app/prisma ./prisma
 COPY --from=base /usr/src/app/server.js ./server.js
+
+RUN npm run prisma:generate
+
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]
