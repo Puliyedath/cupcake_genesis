@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # target: production
     restart: unless-stopped
     ports:
       - "${HOST_PORT:-3000}:3000"
@@ -21,6 +22,7 @@ services:
     networks:
       - cupcake-network
     command: npm run dev
+    # command: npm run start
   
   cupcake-db:
     container_name: cupcake-db
@@ -49,6 +51,7 @@ services:
       dockerfile: scripts/Dockerfile
     container_name: cupcake-db-data
     environment:
+      - CI=true
       - CUPCAKES_DB_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@cupcake-db:5432/${POSTGRES_DB:-cupcakes}
     depends_on:
         cupcake-db:
