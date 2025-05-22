@@ -1,6 +1,6 @@
 # Cupcakes Application
 
-This is a Remix application with a PostgreSQL database running in Docker containers.
+This is a Remix application with a PostgreSQL database running in Docker containers (Only for dev purpose).
 
 ## Prerequisites
 
