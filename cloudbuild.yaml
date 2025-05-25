@@ -9,3 +9,6 @@ steps:
 
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/cupcakes-repo/cupcakes:$COMMIT_SHA' 
+
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
